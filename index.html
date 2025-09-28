@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfólio - Ryan: Desenvolvendo Sites com Blackbox e Gemini</title>
+    <title>Portfolio - Ryan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -40,168 +40,179 @@
       };
     </script>
     <style>
-                        /* Estilos customizados para animações e componentes */
-                        .btn {
-                          display: inline-flex;
-                          align-items: center;
-                          justify-content: center;
-                          border-radius: 0.5rem;
-                          font-size: 0.875rem;
-                          font-weight: 600;
-                          transition: all 0.3s ease;
-                          outline: none;
-                          border: 1px solid transparent;
-                          height: 2.5rem;
-                          padding: 0 1.5rem;
-                        }
+                                    /* Estilos customizados para animações e componentes */
+                                    .btn {
+                                      display: inline-flex;
+                                      align-items: center;
+                                      justify-content: center;
+                                      border-radius: 0.5rem;
+                                      font-size: 0.875rem;
+                                      font-weight: 600;
+                                      transition: all 0.3s ease;
+                                      outline: none;
+                                      border: 1px solid transparent;
+                                      height: 2.5rem;
+                                      padding: 0 1.5rem;
+                                    }
 
-                        .btn-primary {
-                          background-color: hsl(200, 100%, 50%);
-                          color: hsl(222, 12%, 10%);
-                        }
+                                    .btn-primary {
+                                      background-color: hsl(200, 100%, 50%);
+                                      color: hsl(222, 12%, 10%);
+                                    }
 
-                        .btn-primary:hover {
-                          background-color: hsl(200, 100%, 60%);
-                          transform: translateY(-2px);
-                          box-shadow: 0 4px 20px hsl(200, 100%, 50%, 0.25);
-                        }
+                                    .btn-primary:hover {
+                                      background-color: hsl(200, 100%, 60%);
+                                      transform: translateY(-2px);
+                                      box-shadow: 0 4px 20px hsl(200, 100%, 50%, 0.25);
+                                    }
 
-                        .input, .textarea {
-                          width: 100%;
-                          border-radius: 0.5rem;
-                          border: 1px solid hsl(222, 12%, 25%);
-                          background-color: hsl(222, 12%, 12%);
-                          color: hsl(210, 40%, 96%);
-                          padding: 0.75rem;
-                          font-size: 0.875rem;
-                          outline: none;
-                          transition: border-color 0.2s, box-shadow 0.2s;
-                        }
+                                    .input, .textarea {
+                                      width: 100%;
+                                      border-radius: 0.5rem;
+                                      border: 1px solid hsl(222, 12%, 25%);
+                                      background-color: hsl(222, 12%, 12%);
+                                      color: hsl(210, 40%, 96%);
+                                      padding: 0.75rem;
+                                      font-size: 0.875rem;
+                                      outline: none;
+                                      transition: border-color 0.2s, box-shadow 0.2s;
+                                    }
 
-                        .input::placeholder, .textarea::placeholder {
-                          color: hsl(210, 20%, 65%);
-                        }
+                                    .input::placeholder, .textarea::placeholder {
+                                      color: hsl(210, 20%, 65%);
+                                    }
 
-                        .input:focus, .textarea:focus {
-                          border-color: hsl(200, 100%, 50%);
-                          box-shadow: 0 0 0 2px hsl(200, 100%, 50% / 20%);
-                        }
+                                    .input:focus, .textarea:focus {
+                                      border-color: hsl(200, 100%, 50%);
+                                      box-shadow: 0 0 0 2px hsl(200, 100%, 50% / 20%);
+                                    }
 
-                        .textarea {
-                          min-height: 6rem;
-                          resize: vertical;
-                        }
+                                    .textarea {
+                                      min-height: 6rem;
+                                      resize: vertical;
+                                    }
 
-                        .card {
-                          border-radius: 0.75rem;
-                          border: 1px solid hsl(222, 12%, 20%);
-                          background-color: hsl(222, 12%, 15%);
-                          color: hsl(210, 40%, 96%);
-                          overflow: hidden;
-                          transition: transform 0.3s ease, box-shadow 0.3s ease;
-                        }
+                                    .card {
+                                      border-radius: 0.75rem;
+                                      border: 1px solid hsl(222, 12%, 20%);
+                                      background-color: hsl(222, 12%, 15%);
+                                      color: hsl(210, 40%, 96%);
+                                      overflow: hidden;
+                                      transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                    }
 
-                        .card:hover {
-                          transform: translateY(-5px);
-                          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-                          border-color: hsl(222, 12%, 30%);
-                        }
+                                    .card:hover {
+                                      transform: translateY(-5px);
+                                      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                                      border-color: hsl(222, 12%, 30%);
+                                    }
 
-                        .label {
-                          font-size: 0.875rem;
-                          font-weight: 500;
-                          display: block;
-                          margin-bottom: 0.5rem;
-                          color: hsl(210, 40%, 96%);
-                        }
+                                    .label {
+                                      font-size: 0.875rem;
+                                      font-weight: 500;
+                                      display: block;
+                                      margin-bottom: 0.5rem;
+                                      color: hsl(210, 40%, 96%);
+                                    }
 
-                        /* Animação ao rolar */
-                        .animate-on-scroll {
-                          opacity: 0;
-                          transform: translateY(30px);
-                          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-                        }
-                        .animate-on-scroll.is-visible {
-                          opacity: 1;
-                          transform: translateY(0);
-                        }
+                                    /* Animação ao rolar */
+                                    .animate-on-scroll {
+                                      opacity: 0;
+                                      transform: translateY(30px);
+                                      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+                                    }
+                                    .animate-on-scroll.is-visible {
+                                      opacity: 1;
+                                      transform: translateY(0);
+                                    }
 
-                        /* Header fixo */
-                        header {
-                          position: fixed;
-                          width: 100%;
-                          z-index: 50;
-                          transition: background-color 0.4s ease, box-shadow 0.4s ease;
-                        }
-                        header.scrolled {
-                          background-color: hsl(222, 12%, 10%, 0.95);
-                          backdrop-filter: blur(10px);
-                          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-                        }
+                                    /* Header fixo */
+                                    header {
+                                      position: fixed;
+                                      width: 100%;
+                                      z-index: 50;
+                                      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+                                    }
+                                    header.scrolled {
+                                      background-color: hsl(222, 12%, 10%, 0.95);
+                                      backdrop-filter: blur(10px);
+                                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                                    }
 
-                        html {
-                          scroll-behavior: smooth;
-                        }
+                                    html {
+                                      scroll-behavior: smooth;
+                                    }
 
-                        /* Animação de entrada do header */
-                        @keyframes fadeInDown {
-                          from {
-                            opacity: 0;
-                            transform: translateY(-30px);
-                          }
-                          to {
-                            opacity: 1;
-                            transform: translateY(0);
-                          }
-                        }
-                        header {
-                          animation: fadeInDown 0.8s ease-in-out;
-                        }
-                        /* Animação para o botão do WhatsApp */
-                  @keyframes pulse {
-                    0%, 100% {
-                      transform: scale(1);
-                      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-                    }
-                    50% {
-                      transform: scale(1.05);
-                      box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-                    }
-                  }
+                                    /* Animação de entrada do header */
+                                    @keyframes fadeInDown {
+                                      from {
+                                        opacity: 0;
+                                        transform: translateY(-30px);
+                                      }
+                                      to {
+                                        opacity: 1;
+                                        transform: translateY(0);
+                                      }
+                                    }
+                                    header {
+                                      animation: fadeInDown 0.8s ease-in-out;
+                                    }
+                                    /* Animação para o botão do WhatsApp */
+                              @keyframes pulse {
+                                0%, 100% {
+                                  transform: scale(1);
+                                  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+                                }
+                                50% {
+                                  transform: scale(1.05);
+                                  box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+                                }
+                              }
 
-                  #whatsapp-button {
-                    animation: pulse 2.5s infinite;
-                  }
+                              #whatsapp-button {
+                                animation: pulse 2.5s infinite;
+                              }
 
-                  /* Animação de gradiente para o rodapé */
-            /* Animação de ondas para o rodapé */
-      .footer-waves {
-        position: relative; /* Necessário para posicionar a onda */
-        background-color: hsl(222, 12%, 12%); /* Cor de fundo principal do rodapé */
-        overflow: hidden; /* Garante que a onda não saia do rodapé */
+                   /* Estilo para o rodapé e o efeito de luz do cursor */
+            #footer {
+              position: relative; /* Essencial para posicionar a luz dentro dele */
+              overflow: hidden; /* Garante que a luz não "vaze" para fora */
+            }
+
+            /* Estilo da "bola de luz" */
+            #cursor-light {
+              position: absolute;
+              width: 500px; /* Largura da luz */
+              height: 500px; /* Altura da luz */
+              background: radial-gradient(
+                circle,
+                hsla(200, 100%, 50%, 0.15) 0%, /* Cor primária do site com transparência */
+                hsla(200, 100%, 50%, 0) 60%  /* Transparente nas bordas */
+              );
+              border-radius: 50%; /* Deixa em formato de círculo */
+              pointer-events: none; /* Faz o mouse "ignorar" a luz, para poder clicar nos links */
+
+              /* Posição inicial fora da tela e oculta */
+              opacity: 0;
+              transform: translate(-50%, -50%);
+
+              /* Transição suave para aparecer e desaparecer */
+              transition: opacity 0.3s ease-out;
+            }
+
+            /* Efeito de brilho nos links ao passar o mouse SOBRE O RODAPÉ */
+            /* Efeito de brilho constante e intensificado no hover para os links do rodapé */
+      #footer a {
+        /* 1. Brilho constante e sutil */
+        text-shadow: 0 0 5px hsl(200, 100%, 60%, 0.5);
+
+        /* 3. Transição suave para o efeito */
+        transition: text-shadow 0.3s ease-in-out;
       }
 
-      /* A onda é criada com um pseudo-elemento ::before */
-      .footer-waves::before {
-        content: "";
-        position: absolute;
-        top: -1px; /* Posiciona a onda no topo */
-        left: 0;
-        width: 100%;
-        height: 100px; /* Altura da onda */
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3e%3cpath fill='%231a1e23' fill-opacity='1' d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,224C960,245,1056,235,1152,208C1248,181,1344,139,1392,117.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3e%3c/path%3e%3c/svg%3e");
-        background-repeat: repeat-x;
-        background-size: 200% 100px;
-        animation: wave-animation 20s linear infinite;
-      }
-
-      @keyframes wave-animation {
-        0% {
-          background-position-x: 0;
-        }
-        100% {
-          background-position-x: -1440px; /* Move a onda horizontalmente */
-        }
+      #footer:hover a {
+        /* 2. Brilho mais forte ao passar o mouse no rodapé */
+        text-shadow: 0 0 12px hsl(200, 100%, 60%, 0.9);
       }
     </style>
   </head>
@@ -442,13 +453,13 @@
             style="transition-delay: 450ms;"
           >
             <a
-              href="https://github.com/ryanlucasguimaraes-gif?tab=repositories"
+              href="https://ryanlucasguimaraes-gif.github.io/sitetree/"
               target="_blank"
               rel="noopener noreferrer"
               class="btn btn-primary text-lg px-8 py-3"
             >
               <i class="fa-brands fa-github mr-2"></i>
-              Ver Meus Projetos no GitHub
+              Ver Meus Projetos no Hospedados
             </a>
           </div>
         </div>
@@ -462,7 +473,7 @@
               <h2 class="text-2xl font-bold mb-2">Entre em Contato</h2>
               <p class="text-muted-foreground">
                 Tem um projeto em mente? Envie uma mensagem e vamos discutir
-                como posso ajudá-lo com Blackbox e Gemini.
+                como posso ajudá-lo!
               </p>
             </div>
             <div class="card-content p-6">
@@ -505,7 +516,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer-waves pt-24 pb-12 text-center text-muted-foreground">
+    <footer
+      id="footer"
+      class="footer-animated py-12 text-center text-muted-foreground"
+    >
+      <div id="cursor-light"></div>
+
       <div class="container mx-auto px-4 flex flex-col items-center gap-6">
         <div class="flex flex-col md:flex-row items-center gap-6">
           <a
@@ -580,6 +596,28 @@
             );
           });
       });
+      // Efeito de luz seguindo o cursor no rodapé
+      const footer = document.getElementById("footer");
+      const light = document.getElementById("cursor-light");
+
+      if (footer && light) {
+        footer.addEventListener("mouseenter", () => {
+          // Mostra a luz quando o mouse entra no rodapé
+          light.style.opacity = "1";
+        });
+
+        footer.addEventListener("mouseleave", () => {
+          // Esconde a luz quando o mouse sai do rodapé
+          light.style.opacity = "0";
+        });
+
+        footer.addEventListener("mousemove", (e) => {
+          // Move a luz para a posição do mouse
+          // e.pageX e e.pageY dão a posição do mouse na página inteira
+          light.style.left = e.pageX + "px";
+          light.style.top = e.pageY + "px";
+        });
+      }
     </script>
   </body>
 </html>
