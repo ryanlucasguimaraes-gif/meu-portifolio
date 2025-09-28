@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio - Ryan: Desenvolvendo Sites com Blackbox e Gemini</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              /* PALETA DE CORES MINIMALISTA ESCURA */
+              background: "hsl(222, 12%, 10%)" /* Fundo principal */,
+              foreground: "hsl(210, 40%, 96%)" /* Texto principal */,
+              card: {
+                DEFAULT: "hsl(222, 12%, 15%)" /* Fundo dos cards */,
+                foreground: "hsl(210, 40%, 96%)",
+              },
+              primary: {
+                DEFAULT:
+                  "hsl(200, 100%, 50%)" /* Azul vibrante para destaques */,
+                foreground: "hsl(222, 12%, 10%)",
+              },
+              secondary: {
+                DEFAULT: "hsl(222, 12%, 12%)" /* Fundo secundário */,
+                foreground: "hsl(210, 40%, 96%)",
+              },
+              muted: {
+                DEFAULT: "hsl(222, 12%, 15%)",
+                foreground: "hsl(210, 20%, 65%)" /* Texto secundário */,
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+            /* Estilos customizados para animações e componentes */
+            .btn {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 0.5rem;
+              font-size: 0.875rem;
+              font-weight: 600;
+              transition: all 0.3s ease;
+              outline: none;
+              border: 1px solid transparent;
+              height: 2.5rem;
+              padding: 0 1.5rem;
+            }
+
+            .btn-primary {
+              background-color: hsl(200, 100%, 50%);
+              color: hsl(222, 12%, 10%);
+            }
+
+            .btn-primary:hover {
+              background-color: hsl(200, 100%, 60%);
+              transform: translateY(-2px);
+              box-shadow: 0 4px 20px hsl(200, 100%, 50%, 0.25);
+            }
+
+            .input, .textarea {
+              width: 100%;
+              border-radius: 0.5rem;
+              border: 1px solid hsl(222, 12%, 25%);
+              background-color: hsl(222, 12%, 12%);
+              color: hsl(210, 40%, 96%);
+              padding: 0.75rem;
+              font-size: 0.875rem;
+              outline: none;
+              transition: border-color 0.2s, box-shadow 0.2s;
+            }
+
+            .input::placeholder, .textarea::placeholder {
+              color: hsl(210, 20%, 65%);
+            }
+
+            .input:focus, .textarea:focus {
+              border-color: hsl(200, 100%, 50%);
+              box-shadow: 0 0 0 2px hsl(200, 100%, 50% / 20%);
+            }
+
+            .textarea {
+              min-height: 6rem;
+              resize: vertical;
+            }
+
+            .card {
+              border-radius: 0.75rem;
+              border: 1px solid hsl(222, 12%, 20%);
+              background-color: hsl(222, 12%, 15%);
+              color: hsl(210, 40%, 96%);
+              overflow: hidden;
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .card:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+              border-color: hsl(222, 12%, 30%);
+            }
+
+            .label {
+              font-size: 0.875rem;
+              font-weight: 500;
+              display: block;
+              margin-bottom: 0.5rem;
+              color: hsl(210, 40%, 96%);
+            }
+
+            /* Animação ao rolar */
+            .animate-on-scroll {
+              opacity: 0;
+              transform: translateY(30px);
+              transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            .animate-on-scroll.is-visible {
+              opacity: 1;
+              transform: translateY(0);
+            }
+
+            /* Header fixo */
+            header {
+              position: fixed;
+              width: 100%;
+              z-index: 50;
+              transition: background-color 0.4s ease, box-shadow 0.4s ease;
+            }
+            header.scrolled {
+              background-color: hsl(222, 12%, 10%, 0.95);
+              backdrop-filter: blur(10px);
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            html {
+              scroll-behavior: smooth;
+            }
+
+            /* Animação de entrada do header */
+            @keyframes fadeInDown {
+              from {
+                opacity: 0;
+                transform: translateY(-30px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+            header {
+              animation: fadeInDown 0.8s ease-in-out;
+            }
+            /* Animação para o botão do WhatsApp */
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        }
+      }
+
+      #whatsapp-button {
+        animation: pulse 2.5s infinite;
+      }
+    </style>
+  </head>
+  <body class="bg-background text-foreground">
+    <!-- Header -->
+    <header class="py-4 bg-transparent">
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">
+          <span class="text-primary">Ryan</span> Portfolio
+        </h1>
+        <nav class="hidden md:flex gap-6">
+          <a href="#sobre" class="hover:text-primary transition-colors"
+            >Sobre</a
+          >
+          <a href="#trabalho" class="hover:text-primary transition-colors"
+            >Meu Trabalho</a
+          >
+          <a href="#contato" class="hover:text-primary transition-colors"
+            >Contato</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Seção Hero/Banner -->
+      <section
+        class="min-h-screen bg-cover bg-center bg-fixed flex items-center justify-center text-center"
+        style="background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2070&auto=format&fit=crop');"
+      >
+        <div class="bg-black/60 absolute inset-0"></div>
+        <div class="container mx-auto px-4 z-10 animate-on-scroll">
+          <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-4">
+            Desenvolvedor Web <br />
+            <span class="text-primary">Criativo e Eficiente</span>
+          </h2>
+          <p class="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Especializado em criar sites modernos usando ferramentas de IA como
+            Blackbox e Gemini para agilizar o desenvolvimento e entregar
+            resultados excepcionais.
+          </p>
+          <a href="#trabalho" class="btn btn-primary text-lg px-8 py-3"
+            >Ver Meu Trabalho</a
+          >
+        </div>
+      </section>
+
+      <!-- Seção Sobre Mim -->
+      <section id="sobre" class="py-20 bg-background">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-12 animate-on-scroll">
+            <h2 class="text-3xl font-bold text-foreground mb-4">Sobre Mim</h2>
+            <p class="text-muted-foreground max-w-3xl mx-auto">
+              Sou Ryan, um desenvolvedor web apaixonado por inovação e
+              eficiência. Meu foco está em criar experiências digitais limpas,
+              responsivas e impactantes, sempre priorizando a usabilidade e o
+              design minimalista.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="animate-on-scroll">
+              <!-- <img src="ChatGPT Image 28 de set. de 2025, 01_29_08.png" alt="Foto de perfil de Ryan" class="rounded-lg shadow-xl w-full h-auto"> -->
+              <img
+                src="mim2.png"
+                alt="Foto de perfil de Ryan"
+                class="rounded-lg shadow-xl w-2/3 h-auto"
+              />
+            </div>
+            <div class="animate-on-scroll" style="transition-delay: 200ms;">
+              <h3 class="text-2xl font-bold mb-6 text-foreground">
+                Minha Jornada
+              </h3>
+              <p class="text-muted-foreground mb-6">
+                Comecei minha carreira explorando o mundo do desenvolvimento
+                front-end, mas rapidamente adotei ferramentas de IA para
+                otimizar meu fluxo de trabalho. Hoje, integro Blackbox e Gemini
+                em todos os projetos para gerar código limpo, debugar
+                rapidamente e inovar em soluções personalizadas.
+              </p>
+              <ul class="space-y-4">
+                <li class="flex items-center gap-3">
+                  <i class="fa-solid fa-code text-primary text-xl"></i>
+                  <span class="text-foreground"
+                    >Desenvolvimento com HTML, CSS, JS e Tailwind.</span
+                  >
+                </li>
+                <li class="flex items-center gap-3">
+                  <i class="fa-solid fa-robot text-primary text-xl"></i>
+                  <span class="text-foreground"
+                    >Integração de IA: Blackbox para automação e Gemini para
+                    criatividade.</span
+                  >
+                </li>
+                <li class="flex items-center gap-3">
+                  <i class="fa-solid fa-laptop-code text-primary text-xl"></i>
+                  <span class="text-foreground"
+                    >Projetos responsivos e otimizados para performance.</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Meu Modo de Trabalho -->
+      <section id="trabalho" class="py-20 bg-secondary">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-12 animate-on-scroll">
+            <h2 class="text-3xl font-bold text-foreground mb-4">
+              Meu Modo de Trabalho
+            </h2>
+            <p class="text-muted-foreground max-w-3xl mx-auto">
+              Uso Blackbox e Gemini como aliados para transformar ideias em
+              código funcional de forma rápida e precisa. Veja como eu trabalho:
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="card animate-on-scroll">
+              <div class="p-6 text-center">
+                <i class="fa-solid fa-brain text-primary text-4xl mb-4"></i>
+                <h3 class="text-xl font-bold mb-3">Ideação com Gemini</h3>
+                <p class="text-muted-foreground">
+                  Começo gerando conceitos e estruturas iniciais com o Gemini,
+                  que me ajuda a brainstormar layouts e funcionalidades
+                  inovadoras.
+                </p>
+              </div>
+            </div>
+            <div
+              class="card animate-on-scroll"
+              style="transition-delay: 150ms;"
+            >
+              <div class="p-6 text-center">
+                <i class="fa-solid fa-magic text-primary text-4xl mb-4"></i>
+                <h3 class="text-xl font-bold mb-3">Automação com Blackbox</h3>
+                <p class="text-muted-foreground">
+                  Em seguida, uso o Blackbox para codificar seções complexas,
+                  como animações e integrações, garantindo código limpo e sem
+                  erros.
+                </p>
+              </div>
+            </div>
+            <div
+              class="card animate-on-scroll"
+              style="transition-delay: 300ms;"
+            >
+              <div class="p-6 text-center">
+                <i class="fa-solid fa-rocket text-primary text-4xl mb-4"></i>
+                <h3 class="text-xl font-bold mb-3">Otimização e Lançamento</h3>
+                <p class="text-muted-foreground">
+                  Finalizo testando responsividade e performance, refinando com
+                  feedback da IA para um produto final polido e pronto para
+                  deploy.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="text-center mt-12 animate-on-scroll"
+            style="transition-delay: 450ms;"
+          >
+            <p class="text-muted-foreground mb-6">
+              Essa abordagem me permite entregar projetos de alta qualidade em
+              tempo recorde, combinando criatividade humana com a precisão da
+              IA.
+            </p>
+            <a href="#contato" class="btn btn-primary text-lg px-8 py-3"
+              >Entre em Contato</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção de Contato -->
+      <section id="contato" class="py-20 bg-background">
+        <div class="container mx-auto px-4 max-w-2xl">
+          <div class="card animate-on-scroll">
+            <div class="card-header text-center p-6">
+              <h2 class="text-2xl font-bold mb-2">Entre em Contato</h2>
+              <p class="text-muted-foreground">
+                Tem um projeto em mente? Envie uma mensagem e vamos discutir
+                como posso ajudá-lo com Blackbox e Gemini.
+              </p>
+            </div>
+            <div class="card-content p-6">
+              <form id="contact-form" class="space-y-6">
+                <div class="space-y-2">
+                  <label for="nome" class="label">Seu Nome</label>
+                  <input
+                    id="nome"
+                    type="text"
+                    class="input"
+                    placeholder="Digite seu nome completo"
+                    required
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label for="mensagem" class="label">Sua Mensagem</label>
+                  <textarea
+                    id="mensagem"
+                    class="textarea input"
+                    placeholder="Descreva seu projeto ou dúvida..."
+                    required
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary w-full text-base py-3"
+                >
+                  <i class="fa-solid fa-paper-plane mr-2"></i>
+                  Enviar Mensagem
+                </button>
+              </form>
+              <p class="text-xs text-muted-foreground text-center pt-4">
+                Ao enviar, você será redirecionado para o Gmail com os campos
+                pré-preenchidos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary py-8 text-center">
+      <div class="container mx-auto px-4">
+        <p class="text-muted-foreground">
+          &copy; 2024 Ryan Portfolio. Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <a
+      id="whatsapp-button"
+      href="https://wa.me/5562993186103?text=Olá%2C%20preciso%20fazer%20um%20site%2C%20você%20teria%20um%20horário%20livre%20para%20reunião%20de%20definição%20do%20site%3F"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-8 right-8 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110"
+      aria-label="Fale conosco pelo WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp text-4xl"></i>
+    </a>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Animação ao rolar
+        const scrollElements = document.querySelectorAll(".animate-on-scroll");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        scrollElements.forEach((el) => observer.observe(el));
+
+        // Header dinâmico
+        const header = document.querySelector("header");
+        window.addEventListener("scroll", () => {
+          header.classList.toggle("scrolled", window.scrollY > 50);
+        });
+
+        // Formulário de Contato
+        document
+          .getElementById("contact-form")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            const nome = document.getElementById("nome").value;
+            const mensagem = document.getElementById("mensagem").value;
+            const assunto = `Nova Mensagem de Contato - ${nome}`;
+            const corpoEmail = `Nome: ${nome}\n\nMensagem:\n${mensagem}\n\n---\nEnviado via Portfólio de Ryan`;
+            window.open(
+              `mailto:ryan.png123@gmail.com?subject=${encodeURIComponent(
+                assunto
+              )}&body=${encodeURIComponent(corpoEmail)}`,
+              "_blank"
+            );
+          });
+      });
+    </script>
+  </body>
+</html>
